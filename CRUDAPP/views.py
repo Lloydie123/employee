@@ -64,10 +64,10 @@ def remove_emp(request, pk):
 # Sample Trigger Button 
 
 def home(request):
-    context = {
-        "title" : "Trigger Python Logic"
-    }
-    return render(request, "home.html",context)
+    # context = {
+    #     "title" : "Trigger Python Logic"
+    # }
+    return render(request, "index.html")
 
 def simple_function(request):
 
