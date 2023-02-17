@@ -5,7 +5,6 @@ from CRUDAPP.models import Employee
 from django.http import HttpResponse
 
 
-
 # Create Employee
 
 def insert_emp(request):
@@ -22,18 +21,13 @@ def insert_emp(request):
     else:
         return render(request, 'insert.html')
 
-
-
 # Retrive Employee
-        
 def show_emp(request):
     employees = Employee.objects.all()
     return render(request,'show.html',{'employees':employees} )
 
 
-
 # Update Employee
-
 def edit_emp(request,pk):
     employees = Employee.objects.get(id=pk)
     if request.method == 'POST':
@@ -69,7 +63,7 @@ def home(request):
     return render(request, "index.html")
 
 def simple_function(request):
-
+    
     num = 0
     if num == 2:
          print("\n This is a simple function \n")
