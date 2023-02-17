@@ -47,7 +47,6 @@ def edit_emp(request,pk):
 
 
 # Delete Employee
-
 def remove_emp(request, pk):
     employees = Employee.objects.get(id=pk)
 
