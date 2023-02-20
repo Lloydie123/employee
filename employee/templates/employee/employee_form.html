@@ -1,0 +1,142 @@
+{% extends 'employee/base.html' %}
+
+
+{% block title %}
+    Employee Form Create
+{% endblock title %}
+
+{% block content %}
+<button id="toggle-sidebar">Toggle Sidebar</button>
+<div class="wrapper">
+    <div class="sidebar">
+        <ul>
+            <li><a href="/employee/">Dashboard</a></li>
+            <li><a href="/employee/index/">Employees</a></li>
+            <li><a href="/contact">Department</a></li>
+            <li><a href="/contact">Attendance</a></li>
+            <li><a href="/contact">Leave</a></li>
+            <li><a href="/contact">Payroll</a></li>
+            <li><a href="/contact">Leaves</a></li>
+            <li><a href="/contact">Logout</a></li>
+          </ul>
+    </div>
+    <div class="main-content">
+    
+        {% if context_object_name == create_employee or update_employee %}
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+
+    </div>
+  </div>
+
+{% comment %} Add Style {% endcomment %}
+        <style>
+            input[type="text"], input[type="email"], select, textarea {
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              margin-top: 6px;
+              margin-bottom: 16px;
+            }
+            
+            input[type="submit"] {
+              background-color: #4CAF50;
+              color: white;
+              padding: 12px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            }
+            
+            input[type="submit"]:hover {
+              background-color: #45a049;
+            }
+           
+            .form-errors {
+              color: red;
+            }
+
+            /* define styles for the wrapper */
+            .wrapper {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            }
+
+            /* define styles for the sidebar */
+            .sidebar {
+            flex-basis: 200px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            transition: transform  ease-in-out;
+            }
+
+            /* define styles for the main content */
+            .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left  ease-in-out;
+            }
+
+
+            /* hide the sidebar when the wrapper has the "collapsed" class */
+            .wrapper.collapsed .sidebar {
+            transform: translateX(-200px);
+
+            }
+            
+            .wrapper.collapsed .main-content {
+                margin-left: 0;
+                flex-basis: 100%;
+                transform: translateX(-15%);
+              }
+
+            /* Remove WhiteSpace */
+            body{
+                margin:0px;
+            }
+            .sidebar{
+                background-color: black;
+            }
+            .sidebar a {
+                color: #fff;
+                text-decoration: none;
+              }
+              
+              .sidebar a:hover {
+                text-decoration: underline;
+              }
+
+            /* hide the sidebar when the screen width is less than 768px */
+            @media (max-width: 768px) {
+                .wrapper.collapsed .sidebar {
+                  transform: none;
+                }
+              
+                .wrapper.collapsed .main-content {
+                  margin-left: 0;
+                  flex-basis: 100%;
+                  transform: none;
+                }
+              }
+          
+          </style>
+
+<script type="text/javascript">
+    const toggleSidebarButton = document.querySelector('#toggle-sidebar');
+    const wrapper = document.querySelector('.wrapper');
+
+    toggleSidebarButton.addEventListener('click', () => {
+    wrapper.classList.toggle('collapsed');
+    });
+</script>
+    {% endif %}
+
+    {% block sidebar %}
+    
+    {% endblock sidebar %}
+{% endblock content %}
