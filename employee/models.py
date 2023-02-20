@@ -1,5 +1,5 @@
 from django.db import models
-from phone_field import PhoneField
+# from phone_field import PhoneField
 
 
 
@@ -14,7 +14,7 @@ class Employee(models.Model):
     lastName = models.CharField(max_length=40)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="male")
     dateBirth = models.DateField()
-    contactNumber = PhoneField()
+    # contactNumber = PhoneField()
     email = models.EmailField(max_length=200)
     Religion = models.CharField(max_length=200,default="christian")
     Barangay = models.CharField(max_length=200, default="fairview")
